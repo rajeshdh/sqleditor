@@ -1,5 +1,5 @@
 # sqledit
-
+An online sql editor made with (nuxt)[https://nuxtjs.org/], (vuetify)[https://vuetifyjs.com/en/] and (nuxt-content)[https://github.com/nuxt/content]
 ## Build Setup
 
 ```bash
