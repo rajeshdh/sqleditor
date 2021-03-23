@@ -27,6 +27,7 @@
         :columns="tableColumns"
         :selected-columns="selectedColumns"
         :selected-table="selectedTable"
+        :selected-filters="selectedFilters"
       />
 
       <div
