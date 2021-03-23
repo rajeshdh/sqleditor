@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
+    <v-col>
       <select-table
         :tables="csvTables"
         :selected-table="selectedTable"
@@ -28,11 +28,39 @@
         :selected-columns="selectedColumns"
         :selected-table="selectedTable"
       />
+
+      <div
+        style="width: 100%"
+        class="d-flex justify-space-between align-center"
+      >
+        <span class="subtitle-1">FILTERS</span>
+        <v-btn text @click="setFilter">
+          <v-icon>mdi-plus</v-icon>add filter</v-btn
+        >
+      </div>
+      <v-divider></v-divider>
+      <div v-if="selectedFilters.length > 0" class="mt-7">
+        <div
+          v-for="(item, index) in selectedFilters"
+          :key="item.index + item.column"
+        >
+          <filter-item
+            :selected-filter="item"
+            :index="index"
+            :columns="tableColumns"
+            :selected-columns="selectedColumns"
+            @input="setField"
+            @clearFilter="clearFilter"
+            @removeFilter="removeFilter"
+          />
+        </div>
+      </div>
     </v-col>
   </v-row>
 </template>
 
 <script>
+import FilterItem from '~/components/FilterItem.vue'
 import Query from '~/components/Query.vue'
 import SelectColumns from '~/components/SelectColumns.vue'
 import SelectTable from '~/components/SelectTable.vue'
@@ -42,6 +70,7 @@ export default {
     SelectTable,
     SelectColumns,
     Query,
+    FilterItem,
   },
   async asyncData({ $content }) {
     // get csv data
@@ -53,6 +82,16 @@ export default {
       selectedTable: null,
       selectedColumns: [],
       columnsData: [],
+      operators: {
+        'greater than': '>',
+        'less than': '<',
+        equal: '==',
+        'not equal': '!==',
+        in: 'in',
+        between: 'between',
+      },
+      selectedFilters: [],
+      filterIndex: 0,
     }
   },
   computed: {
@@ -76,6 +115,37 @@ export default {
     },
     selectAllColumns() {
       this.selectedColumns = [...this.tableColumns]
+    },
+    setFilter() {
+      const id = this.filterIndex
+      const filterData = {
+        index: id,
+        column: null,
+        andOrOr: 'and',
+        filter: null,
+        input1: null,
+        input2: null,
+      }
+      this.selectedFilters = [...this.selectedFilters, filterData]
+      this.filterIndex += 1
+    },
+    removeFilter(index) {
+      this.selectedFilters = this.selectedFilters.filter(
+        (filter) => filter.index !== index
+      )
+    },
+    clearFilter(index) {
+      const newValue = this.selectedFilters.find((item) => item.index === index)
+      newValue.filter = null
+      newValue.input1 = null
+      newValue.input2 = null
+
+      this.$set(this.selectedFilters, index, newValue)
+    },
+    setField(index, key, value) {
+      const newValue = this.selectedFilters.find((item) => item.index === index)
+      newValue[key] = value
+      this.$set(this.selectedFilters, index, newValue)
     },
   },
 }
