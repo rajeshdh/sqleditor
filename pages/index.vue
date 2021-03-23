@@ -22,11 +22,18 @@
         :selected-columns="selectedColumns"
         @updateColumns="setColumns"
       />
+      <query
+        v-if="selectedColumns.length"
+        :columns="tableColumns"
+        :selected-columns="selectedColumns"
+        :selected-table="selectedTable"
+      />
     </v-col>
   </v-row>
 </template>
 
 <script>
+import Query from '~/components/Query.vue'
 import SelectColumns from '~/components/SelectColumns.vue'
 import SelectTable from '~/components/SelectTable.vue'
 export default {
@@ -34,6 +41,7 @@ export default {
   components: {
     SelectTable,
     SelectColumns,
+    Query,
   },
   async asyncData({ $content }) {
     // get csv data
