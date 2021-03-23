@@ -34,6 +34,18 @@ export default {
       },
     },
   },
+  data() {
+    return {
+      operators: {
+        'greater than': '>',
+        'less than': '<',
+        equal: '==',
+        'not equal': '!==',
+        in: 'in',
+        between: 'between',
+      },
+    }
+  },
   computed: {
     query() {
       const selectStatement =
@@ -59,13 +71,13 @@ export default {
               ].includes(filter.filter)
             ) {
               statement = `${statement} ${this.operators[filter.filter]} ${
-                filter.inputField1
+                filter.input1
               }`
               return statement
             } else if (filter.filter === 'between') {
               statement = `${statement} ${this.operators[filter.filter]} '${
-                filter.inputField1
-              }' and '${filter.inputField2}'`
+                filter.input1
+              }' and '${filter.input2}'`
               return statement
             }
             return statement

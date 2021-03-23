@@ -83,14 +83,6 @@ export default {
       selectedTable: null,
       selectedColumns: [],
       columnsData: [],
-      operators: {
-        'greater than': '>',
-        'less than': '<',
-        equal: '==',
-        'not equal': '!==',
-        in: 'in',
-        between: 'between',
-      },
       selectedFilters: [],
       filterIndex: 0,
     }

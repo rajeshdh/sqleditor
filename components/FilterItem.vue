@@ -1,7 +1,7 @@
 <template>
   <v-row align="center" justify="start" flex-wrap no-gutters>
     <v-col class="mr-2" cols="2">
-      <div class="d-flex align-center">
+      <div v-if="index > 0" class="d-flex align-center">
         <v-btn-toggle
           v-model="localFilter.andOrOr"
           small
