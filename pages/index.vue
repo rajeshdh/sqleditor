@@ -1,23 +1,39 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12" sm="8" md="6">
-      <pre>{{ csvTables }}</pre>
       <select-table
         :tables="csvTables"
         :selected-table="selectedTable"
         @select="setTable"
       />
-      <pre>{{ tableColumns }}</pre>
+      <div
+        style="width: 100%"
+        class="d-flex justify-space-between align-center"
+      >
+        <span style="color: #17a7c1" class="font-weight-bold grey--text"
+          >Total Columns ({{ tableColumns.length }})</span
+        >
+        <v-btn class="caption" small outlined text @click="selectAllColumns"
+          >Select all columns</v-btn
+        >
+      </div>
+      <select-columns
+        :columns="tableColumns"
+        :selected-columns="selectedColumns"
+        @updateColumns="setColumns"
+      />
     </v-col>
   </v-row>
 </template>
 
 <script>
+import SelectColumns from '~/components/SelectColumns.vue'
 import SelectTable from '~/components/SelectTable.vue'
 export default {
   name: 'Home',
   components: {
     SelectTable,
+    SelectColumns,
   },
   async asyncData({ $content }) {
     // get csv data
@@ -27,6 +43,7 @@ export default {
   data() {
     return {
       selectedTable: null,
+      selectedColumns: [],
       columnsData: [],
     }
   },
@@ -45,6 +62,12 @@ export default {
       this.columnsData = await this.$content('csv', this.selectedTable)
         .only(['body'])
         .fetch()
+    },
+    setColumns(columns) {
+      this.selectedColumns = [...columns]
+    },
+    selectAllColumns() {
+      this.selectedColumns = [...this.tableColumns]
     },
   },
 }
