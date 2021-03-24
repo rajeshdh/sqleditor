@@ -1,5 +1,5 @@
-# sqledit
-An online sql editor made with (nuxt)[https://nuxtjs.org/], (vuetify)[https://vuetifyjs.com/en/] and (nuxt-content)[https://github.com/nuxt/content]
+# SqlGen - An online SQL Query generator
+An online sql editor made with [nuxt](https://nuxtjs.org/), [vuetify](https://vuetifyjs.com/en/), [nuxt-content](https://github.com/nuxt/content) and [highlight.js](https://highlightjs.org/) for syntax highlighting.
 ## Build Setup
 
 ```bash

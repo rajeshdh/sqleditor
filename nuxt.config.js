@@ -9,8 +9,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - sqledit',
-    title: 'sqledit',
+    titleTemplate: '%s - An online sql query generator',
+    title: 'SqlGen',
     htmlAttrs: {
       lang: 'en',
     },
@@ -26,7 +26,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['@/plugins/highlight'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
