@@ -32,8 +32,16 @@
           <v-card flat>
             <v-card-text class="d-flex justify-space-between align-center">
               <span class="subtitle-1">FILTERS</span>
-              <v-btn text small outlined color="pink" @click="setFilter">
-                <v-icon>mdi-plus</v-icon>add filter</v-btn
+              <v-btn
+                text
+                small
+                outlined
+                color="pink"
+                :disabled="!selectedColumns.length"
+                @click="setFilter"
+              >
+                <v-icon>{{ plusIcon }}</v-icon
+                >add filter</v-btn
               >
             </v-card-text>
           </v-card>
@@ -118,10 +126,12 @@
 </template>
 
 <script>
+import { mdiPlus } from '@mdi/js'
 import FilterItem from '~/components/FilterItem.vue'
 import Query from '~/components/Query.vue'
 import SelectColumns from '~/components/SelectColumns.vue'
 import SelectTable from '~/components/SelectTable.vue'
+
 export default {
   name: 'Home',
   components: {
@@ -161,6 +171,7 @@ export default {
           text: 'SELECT * FROM customers',
         },
       ],
+      plusIcon: mdiPlus,
     }
   },
   computed: {
