@@ -1,9 +1,14 @@
 <template>
   <div class="mt-5">
-    <span class="subtitle-1 text-uppercase">SQL Statement</span>
+    <span class="subtitle-1 my-5 text-uppercase">SQL Statement</span>
     <v-divider></v-divider>
 
-    <pre class="pb-5 pt-2" v-text="query"></pre>
+    <div
+      v-if="selectedColumns.length"
+      style="white-space: pre-wrap"
+      class="pb-5 pt-2"
+      v-html="query"
+    ></div>
   </div>
 </template>
 
@@ -32,6 +37,10 @@ export default {
       default() {
         return []
       },
+    },
+    queryLimit: {
+      type: Number,
+      default: 1,
     },
   },
   data() {
@@ -87,10 +96,11 @@ export default {
           selectStatement +
           '\nWHERE ' +
           conditionsStatement.join('\n') +
-          `\nlimit ${this.numberRows}`
+          `\nlimit ${this.queryLimit}`
         )
+      } else {
+        return selectStatement + '\nWHERE ' + `\nlimit ${this.queryLimit}`
       }
-      return selectStatement
     },
   },
 }

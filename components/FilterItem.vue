@@ -18,6 +18,8 @@
         dense
         :items="selectedColumns"
         label="column"
+        outlined
+        class="mt-5"
         @input="$emit('input', index, 'column', $event)"
         @change="clearFilter(index)"
       ></v-select>
@@ -27,17 +29,20 @@
         v-model="localFilter.filter"
         dense
         :items="columnFilters(localFilter.column)"
-        class="mr-2"
+        outlined
+        class="mr-2 mt-5"
         label="condition"
         @input="$emit('input', index, 'filter', $event)"
       ></v-select>
     </v-col>
-    <v-col v-if="localFilter.column" class="mr-2" cols="1">
+    <v-col v-if="localFilter.column" class="mr-2" cols="2">
       <v-text-field
         v-model="localFilter.input1"
         :rules="[rules.required]"
         autocomplete="new-value"
         label="value"
+        outlined
+        class="mr-2 mt-5"
         dense
         @input="$emit('input', index, 'input1', $event)"
       ></v-text-field>
@@ -60,19 +65,27 @@
         localFilter.filter &&
         localFilter.filter === 'between'
       "
-      cols="1"
+      cols="2"
     >
       <v-text-field
         v-model="localFilter.input2"
         required
         label="value"
+        outlined
+        class="mr-2 mt-5"
         :rules="[rules.required]"
         dense
         @input="$emit('input', index, 'input2', $event)"
       ></v-text-field>
     </v-col>
     <v-col cols="1">
-      <v-btn color="error" icon @click="removeFilter(localFilter.index)">
+      <v-btn
+        color="error"
+        outlined
+        class="mr-2"
+        icon
+        @click="removeFilter(localFilter.index)"
+      >
         <v-icon>mdi-delete-outline</v-icon>
       </v-btn>
     </v-col>
