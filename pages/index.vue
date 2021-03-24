@@ -3,7 +3,7 @@
     <v-row justify="center">
       <v-col cols="12" md="8">
         <v-card class="pa-3">
-          <select-table
+          <LazySelectTable
             :tables="csvTables"
             :selected-table="selectedTable"
             @select="setTable"
@@ -23,7 +23,7 @@
               >
             </v-card-text>
           </v-card>
-          <select-columns
+          <LazySelectColumns
             :columns="tableColumns"
             :selected-columns="selectedColumns"
             @updateColumns="setColumns"
@@ -51,7 +51,7 @@
               v-for="(item, index) in selectedFilters"
               :key="item.index + item.column"
             >
-              <filter-item
+              <LazyFilterItem
                 :selected-filter="item"
                 :index="index"
                 :columns="tableColumns"
@@ -85,7 +85,7 @@
       <v-col cols="12" md="4">
         <v-card class="v-card--material pa-3">
           <v-card-text>
-            <query
+            <LazyQuery
               :columns="tableColumns"
               :selected-columns="selectedColumns"
               :selected-table="selectedTable"
@@ -127,19 +127,19 @@
 
 <script>
 import { mdiPlus } from '@mdi/js'
-import FilterItem from '~/components/FilterItem.vue'
-import Query from '~/components/Query.vue'
-import SelectColumns from '~/components/SelectColumns.vue'
-import SelectTable from '~/components/SelectTable.vue'
+// import FilterItem from '~/components/FilterItem.vue'
+// import Query from '~/components/Query.vue'
+// import SelectColumns from '~/components/SelectColumns.vue'
+// import SelectTable from '~/components/SelectTable.vue'
 
 export default {
   name: 'Home',
-  components: {
-    SelectTable,
-    SelectColumns,
-    Query,
-    FilterItem,
-  },
+  // components: {
+  //   SelectTable,
+  //   SelectColumns,
+  //   Query,
+  //   FilterItem,
+  // },
   async asyncData({ $content }) {
     // get csv data
     const csvTables = await $content('csv').only(['slug']).fetch()
