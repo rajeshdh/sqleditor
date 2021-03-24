@@ -2,6 +2,8 @@
 
 An online sql editor made with [nuxt](https://nuxtjs.org/), [vuetify](https://vuetifyjs.com/en/), [nuxt-content](https://github.com/nuxt/content) and [highlight.js](https://highlightjs.org/) for syntax highlighting.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/08bb3178-9ef7-49c9-af3b-f8e12766dfe2/deploy-status)](https://app.netlify.com/sites/sqleditor/deploys)
+
 ## Build Setup
 
 ```bash
@@ -35,22 +37,22 @@ Tested using lighthouse
 
 ### Desktop
 
-| Item                           | Value    |
-| ------------------------------ | -------- |
-| FCP (First Contentful Paint)   | 562 ms   |
-| SI (Speed Index)               | 1,282 ms |
-| LCP (Largest Contentful Paint) | 707 ms   |
-| TTI (Time to Interactive)      | 823 ms   |
-| TBT (Total Blocking Time)      | 6 ms     |
-| CLS (Cumulative Layout Shift)  | 0.00     |
+| Item                           | Before   | After    |
+| ------------------------------ | -------- | -------- |
+| FCP (First Contentful Paint)   | 562 ms   | 561 ms   |
+| SI (Speed Index)               | 1,282 ms | 1,269 ms |
+| LCP (Largest Contentful Paint) | 707 ms   | 718 ms   |
+| TTI (Time to Interactive)      | 823 ms   | 719 ms   |
+| TBT (Total Blocking Time)      | 6 ms     | 4 ms     |
+| CLS (Cumulative Layout Shift)  | 0.00     | 0.00     |
 
 ### Mobile
 
-| Item                           | Value    |
-| ------------------------------ | -------- |
-| FCP (First Contentful Paint)   | 2,124 ms |
-| SI (Speed Index)               | 5,219 ms |
-| LCP (Largest Contentful Paint) | 3,044 ms |
-| TTI (Time to Interactive)      | 3,569 ms |
-| TBT (Total Blocking Time)      | 330 ms   |
-| CLS (Cumulative Layout Shift)  | 0.02     |
+| Item                           | Value    | After    |
+| ------------------------------ | -------- | -------- |
+| FCP (First Contentful Paint)   | 2,124 ms | 1867 ms  |
+| SI (Speed Index)               | 5,219 ms | 3,581 ms |
+| LCP (Largest Contentful Paint) | 3,044 ms | 2,693 ms |
+| TTI (Time to Interactive)      | 3,569 ms | 2,919 ms |
+| TBT (Total Blocking Time)      | 330 ms   | 201 ms   |
+| CLS (Cumulative Layout Shift)  | 0.02     | 0.02     |
