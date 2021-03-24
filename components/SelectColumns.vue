@@ -17,7 +17,7 @@
             :input-value="data.selected"
             :disabled="data.disabled"
             close
-            close-icon="mdi-close"
+            :close-icon="closeIcon"
             @click:close="data.parent.selectItem(data.item)"
           >
             {{ data.item }}
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { mdiClose } from '@mdi/js'
 export default {
   props: {
     columns: {
@@ -44,7 +45,11 @@ export default {
       },
     },
   },
-
+  data() {
+    return {
+      closeIcon: mdiClose,
+    }
+  },
   methods: {
     setColumns(columns) {
       this.$emit('updateColumns', columns)

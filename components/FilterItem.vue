@@ -86,14 +86,15 @@
         icon
         @click="removeFilter(localFilter.index)"
       >
-        <v-icon>mdi-delete-outline</v-icon>
+        <v-icon>{{ deleteIcon }}</v-icon>
       </v-btn>
     </v-col>
   </v-row>
 </template>
 
 <script>
-// import { mapState, mapGetters, mapActions } from 'vuex'
+import { mdiDeleteOutline } from '@mdi/js'
+
 export default {
   name: 'FiltersItems',
   props: {
@@ -146,6 +147,7 @@ export default {
           (!!parseInt(value) && value >= 0 && value <= 10000) ||
           'Please insert a number between 1 and 10000 rows',
       },
+      deleteIcon: mdiDeleteOutline,
     }
   },
   methods: {
