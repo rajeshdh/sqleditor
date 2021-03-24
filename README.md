@@ -1,5 +1,7 @@
 # SqlGen - An online SQL Query generator
+
 An online sql editor made with [nuxt](https://nuxtjs.org/), [vuetify](https://vuetifyjs.com/en/), [nuxt-content](https://github.com/nuxt/content) and [highlight.js](https://highlightjs.org/) for syntax highlighting.
+
 ## Build Setup
 
 ```bash
@@ -18,3 +20,11 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+# Demo
+
+![demo workflow](assets/workflow.gif)
+
+## Demo - running predefined queries
+
+![demo running predefined queries](assets/sampleQuery.gif)
