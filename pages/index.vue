@@ -86,7 +86,7 @@
             />
             <v-divider class="mb-3 mt-3"></v-divider>
             <span class="subtitle-1 mb-5 my-5 text-center"
-              >Run A Sample Query</span
+              >Click on any of the queries below to see it in action.</span
             >
             <v-divider class="mb-3 mt-3"></v-divider>
             <v-row v-for="query in queries" :key="query.id">
