@@ -28,3 +28,29 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 ## Demo - running predefined queries
 
 ![demo running predefined queries](assets/sampleQuery.gif)
+
+# Page Load Time
+
+Tested using lighthouse
+
+### Desktop
+
+| Item                           | Value    |
+| ------------------------------ | -------- |
+| FCP (First Contentful Paint)   | 562 ms   |
+| SI (Speed Index)               | 1,282 ms |
+| LCP (Largest Contentful Paint) | 707 ms   |
+| TTI (Time to Interactive)      | 823 ms   |
+| TBT (Total Blocking Time)      | 6 ms     |
+| CLS (Cumulative Layout Shift)  | 0.00     |
+
+### Mobile
+
+| Item                           | Value    |
+| ------------------------------ | -------- |
+| FCP (First Contentful Paint)   | 2,124 ms |
+| SI (Speed Index)               | 5,219 ms |
+| LCP (Largest Contentful Paint) | 3,044 ms |
+| TTI (Time to Interactive)      | 3,569 ms |
+| TBT (Total Blocking Time)      | 330 ms   |
+| CLS (Cumulative Layout Shift)  | 0.02     |
