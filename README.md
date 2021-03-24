@@ -33,7 +33,15 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 # Page Load Time
 
-Tested using lighthouse
+I have tested page load time using lighthouse in google chrome.
+I have done the following things to optimize page performance.
+
+- Added treeshaking for Vuetify modules, so that we only import the code for the components that we are using.
+- Removed loading of default icons from Vuetify and used the @mdi/js module to only import icons that we need.
+- Added nuxt-purgecss to remove unwanted css
+- Lazy loading Vue components to reduce the initial bundle size.
+
+Below are results for various matrices before and after optimizations.
 
 ### Desktop
 
@@ -46,6 +54,9 @@ Tested using lighthouse
 | TBT (Total Blocking Time)      | 6 ms     | 4 ms     |
 | CLS (Cumulative Layout Shift)  | 0.00     | 0.00     |
 
+Screenshot:
+![lighthouse desktop results](assets/desktopLighthouse.png)
+
 ### Mobile
 
 | Item                           | Value    | After    |
@@ -56,3 +67,6 @@ Tested using lighthouse
 | TTI (Time to Interactive)      | 3,569 ms | 2,919 ms |
 | TBT (Total Blocking Time)      | 330 ms   | 201 ms   |
 | CLS (Cumulative Layout Shift)  | 0.02     | 0.02     |
+
+Screenshot:
+![lighthouse desktop results](assets/mobileLighthouse.png)
