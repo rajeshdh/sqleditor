@@ -23,7 +23,7 @@ export default {
       clipped: false,
 
       fixed: false,
-      title: 'SQL Editor',
+      title: 'SqlGen - Online SQL Editor',
     }
   },
 }

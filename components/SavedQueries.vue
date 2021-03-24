@@ -1,0 +1,143 @@
+<template>
+  <v-col class="query-col">
+    <div @click="setQuery(query.id)">
+      <highlight-code
+        lang="sql_more"
+        style="white-space: pre-wrap"
+        class="pb-5 pt-2 query"
+      >
+        {{ query.text }}</highlight-code
+      >
+    </div>
+  </v-col>
+</template>
+
+<script>
+export default {
+  props: {
+    query: {
+      type: Object,
+      default() {
+        return {
+          id: 0,
+          text: '',
+        }
+      },
+    },
+  },
+  methods: {
+    setQuery(index) {
+      this.$emit('setQuery', index)
+    },
+  },
+}
+</script>
+<style scoped>
+.query {
+  background: #232323 !important;
+  color: #e6e1dc !important;
+}
+.query-col:hover {
+  cursor: pointer;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #232323 !important;
+  color: #e6e1dc !important;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #bc9458;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #c26230;
+}
+
+.hljs-number,
+.hljs-regexp,
+.hljs-string,
+.hljs-template-variable,
+.hljs-variable {
+  color: #a5c261;
+}
+
+.hljs-subst {
+  color: #519f50;
+}
+
+.hljs-name,
+.hljs-tag {
+  color: #e8bf6a;
+}
+
+.hljs-type {
+  color: #da4939;
+}
+
+.hljs-attr,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-bullet,
+.hljs-link,
+.hljs-symbol {
+  color: #6d9cbe;
+}
+
+.hljs-params {
+  color: #d0d0ff;
+}
+
+.hljs-attribute {
+  color: #cda869;
+}
+
+.hljs-meta {
+  color: #9b859d;
+}
+
+.hljs-section,
+.hljs-title {
+  color: #ffc66d;
+}
+
+.hljs-addition {
+  background-color: #144212;
+  color: #e6e1dc;
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-deletion {
+  background-color: #600;
+  color: #e6e1dc;
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-selector-class {
+  color: #9b703f;
+}
+
+.hljs-selector-id {
+  color: #8b98ab;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: 700;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+</style>

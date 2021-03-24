@@ -32,7 +32,7 @@
           <v-card flat>
             <v-card-text class="d-flex justify-space-between align-center">
               <span class="subtitle-1">FILTERS</span>
-              <v-btn text @click="setFilter" small outlined color="pink">
+              <v-btn text small outlined color="pink" @click="setFilter">
                 <v-icon>mdi-plus</v-icon>add filter</v-btn
               >
             </v-card-text>
@@ -84,6 +84,14 @@
               :selected-filters="selectedFilters"
               :query-limit="queryLimit"
             />
+            <v-divider class="mb-3 mt-3"></v-divider>
+            <span class="subtitle-1 mb-5 my-5 text-center"
+              >Run A Sample Query</span
+            >
+            <v-divider class="mb-3 mt-3"></v-divider>
+            <v-row v-for="query in queries" :key="query.id">
+              <saved-queries :query="query" @setQuery="setQuery" />
+            </v-row>
           </v-card-text>
         </v-card>
       </v-col>
@@ -134,6 +142,7 @@ export default {
       columnsData: [],
       selectedFilters: [],
       filterIndex: 0,
+      tableColumns: [],
       validForm: true,
       queryLimit: 10000,
       rules: {
@@ -142,20 +151,21 @@ export default {
           (!!parseInt(value) && value >= 0 && value <= 10000) ||
           'Please insert a number between 1 and 10000 rows',
       },
+      queries: [
+        {
+          id: 1,
+          text: 'SELECT * FROM products',
+        },
+        {
+          id: 2,
+          text: 'SELECT * FROM customers',
+        },
+      ],
     }
   },
   computed: {
-    tableColumns() {
-      return this.columnsData &&
-        this.columnsData.body &&
-        this.columnsData.body.length
-        ? Object.keys(this.columnsData.body[0])
-        : []
-    },
     tableItems() {
-      return this.columnsData &&
-        this.columnsData.body &&
-        this.columnsData.body.length
+      return this.columnsData.body && this.columnsData.body.length
         ? this.columnsData.body
         : []
     },
@@ -170,6 +180,14 @@ export default {
           class: 'blue lighten-5',
         }
       })
+    },
+  },
+  watch: {
+    columnsData(newTable, oldTable) {
+      this.tableColumns =
+        this.columnsData.body && this.columnsData.body.length
+          ? Object.keys(this.columnsData.body[0])
+          : []
     },
   },
   methods: {
@@ -215,6 +233,29 @@ export default {
       const newValue = this.selectedFilters.find((item) => item.index === index)
       newValue[key] = value
       this.$set(this.selectedFilters, index, newValue)
+    },
+    setQuery(query) {
+      if (query === 1) {
+        this.setTable('products')
+        this.$nextTick(() => {
+          this.$nuxt.$loading.start()
+
+          setTimeout(() => {
+            this.selectAllColumns()
+            this.$nuxt.$loading.finish()
+          }, 500)
+        })
+      } else {
+        this.setTable('customers')
+        this.$nextTick(() => {
+          this.$nuxt.$loading.start()
+
+          setTimeout(() => {
+            this.selectAllColumns()
+            this.$nuxt.$loading.finish()
+          }, 500)
+        })
+      }
     },
   },
 }
