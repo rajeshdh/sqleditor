@@ -26,7 +26,7 @@
     "@mdi/js": "^5.9.55",
     "@nuxt/content": "^1.14.0",
     "core-js": "^3.9.1",
-    "highlight.js": "^10.7.1",
+    "highlight.js": "^10.7.2",
     "nuxt": "^2.15.3",
     "vue-highlight.js": "^4.0.1-beta"
   },
